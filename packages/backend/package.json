@@ -1,0 +1,52 @@
+{
+	"name": "@vite-trpc-demo/backend",
+	"version": "0.0.1",
+	"license": "UNLICENSED",
+	"private": true,
+	"type": "module",
+	"engines": {
+		"node": "22.x"
+	},
+	"packageManager": "pnpm@10.6.3+sha512.bb45e34d50a9a76e858a95837301bfb6bd6d35aea2c5d52094fa497a467c43f5c440103ce2511e9e0a2f89c3d6071baac3358fc68ac6fb75e2ceb3d2736065e6",
+	"imports": {
+		"#src/*": "./src/*"
+	},
+	"exports": {
+		".": {
+			"types": "./dist/types.d.ts"
+		}
+	},
+	"scripts": {
+		"dev": "echo -ne \"\\033]0;@vite-trpc-demo/backend • dev\\007\" && pnpm run dev:notitle",
+		"dev:notitle": "concurrently --names server,types --prefix-colors auto \"pnpm run server:watch:notitle\" \"pnpm run build-types:watch:notitle\"",
+		"server": "node --import @swc-node/register/esm-register --enable-source-maps ./src/server.ts",
+		"server:watch": "echo -ne \"\\033]0;@vite-trpc-demo/backend • server:watch\\007\" && pnpm run server:watch:notitle",
+		"server:watch:notitle": "node --import @swc-node/register/esm-register --enable-source-maps --watch ./src/server.ts",
+		"build-types": "rm -rf ./dist && tsc -p tsconfig.app.json",
+		"build-types:watch": "echo -ne \"\\033]0;@vite-trpc-demo/backend • build-types:watch\\007\" && pnpm run build-types:watch:notitle",
+		"build-types:watch:notitle": "tsc -p tsconfig.app.json --watch --preserveWatchOutput",
+		"type-check": "tsc --noEmit -p tsconfig.app.json && tsc --noEmit -p tsconfig.configs.json",
+		"format": "prettier --write .",
+		"lint": "eslint --fix ."
+	},
+	"dependencies": {
+		"@trpc/server": "11.0.0-rc.828",
+		"cors": "^2.8.5",
+		"zod": "^3.24.2"
+	},
+	"devDependencies": {
+		"@vite-trpc-demo/configs": "workspace:*",
+		"@swc-node/register": "~1.10.9",
+		"@types/cors": "~2.8.17",
+		"@types/node": "catalog:",
+		"concurrently": "~9.1.2",
+		"eslint": "catalog:",
+		"jiti": "catalog:",
+		"prettier": "catalog:",
+		"typescript": "catalog:",
+		"typescript-eslint": "catalog:"
+	},
+	"devDependencies-comments": {
+		"jiti": "Required for eslint.config.ts support: https://eslint.org/docs/latest/use/configure/configuration-files#typescript-configuration-files"
+	}
+}

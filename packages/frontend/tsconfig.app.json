@@ -1,0 +1,21 @@
+{
+	"extends": "../../tsconfig.base.json",
+	"compilerOptions": {
+		"jsx": "react-jsx",
+		"lib": ["ESNext", "DOM", "DOM.Iterable", "DOM.AsyncIterable"],
+		"noEmit": true,
+		"rootDir": "src",
+
+		"plugins": [
+			{
+				"name": "typescript-plugin-css-modules",
+				"options": {
+					"classnameTransform": "camelCaseOnly",
+					"goToDefinition": true,
+					"noUncheckedIndexedAccess": true
+				}
+			}
+		]
+	},
+	"include": ["src/**/*"]
+}

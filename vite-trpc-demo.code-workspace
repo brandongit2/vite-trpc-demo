@@ -1,0 +1,59 @@
+{
+	"folders": [
+		{
+			"name": "frontend",
+			"path": "./packages/frontend",
+		},
+		{
+			"name": "backend",
+			"path": "./packages/backend",
+		},
+		{
+			"name": "configs",
+			"path": "./packages/configs",
+		},
+		{
+			"name": "monorepo",
+			"path": ".",
+		},
+	],
+	"settings": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"prettier.enable": true,
+		"editor.formatOnSave": true,
+		"editor.codeActionsOnSave": {
+			"source.fixAll.eslint": "explicit",
+			"source.fixAll.stylelint": "explicit",
+		},
+		"eslint.useFlatConfig": true,
+		"eslint.useESLintClass": true,
+		"eslint.problems.shortenToSingleLine": true,
+		"eslint.rules.customizations": [
+			{
+				"rule": "*",
+				"fixable": true,
+				"severity": "info",
+			},
+		],
+		"files.insertFinalNewline": true,
+
+		"typescript.tsdk": "node_modules/typescript/lib",
+		"typescript.enablePromptUseWorkspaceTsdk": true,
+
+		"typescript.preferences.importModuleSpecifierEnding": "js",
+
+		// https://tanstack.com/router/latest/docs/framework/react/routing/installation-with-router-cli#ignoring-the-generated-route-tree-file
+		"files.readonlyInclude": {
+			"**/route-tree.gen.ts": true,
+		},
+		"files.watcherExclude": {
+			"**/route-tree.gen.ts": true,
+		},
+		"search.exclude": {
+			"**/route-tree.gen.ts": true,
+		},
+	},
+	"extensions": {
+		"recommendations": ["dbaeumer.vscode-eslint", "esbenp.prettier-vscode"],
+	},
+}

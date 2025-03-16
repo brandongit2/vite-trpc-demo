@@ -1,0 +1,48 @@
+{
+	"name": "@vite-trpc-demo/monorepo",
+	"version": "0.0.1",
+	"license": "UNLICENSED",
+	"private": true,
+	"type": "module",
+	"engines": {
+		"node": "22.x"
+	},
+	"packageManager": "pnpm@10.6.3+sha512.bb45e34d50a9a76e858a95837301bfb6bd6d35aea2c5d52094fa497a467c43f5c440103ce2511e9e0a2f89c3d6071baac3358fc68ac6fb75e2ceb3d2736065e6",
+	"scripts": {
+		"dev": "echo -ne \"\\033]0;@vite-trpc-demo/monorepo • dev\\007\" && pnpm run dev:notitle",
+		"dev:notitle": "concurrently --names backend,frontend --prefix-colors auto \"pnpm -F @vite-trpc-demo/backend run dev:notitle\" \"pnpm -F @vite-trpc-demo/frontend run dev:notitle\"",
+		"type-check": "tsc --noEmit -p tsconfig.json",
+		"format": "prettier --write .",
+		"lint": "eslint --fix .",
+		"type-check-all": "pnpm run type-check && pnpm run --parallel --aggregate-output \"/^type-check$/\"",
+		"format-all": "pnpm run format && pnpm run --parallel --aggregate-output \"/^format$/\"",
+		"lint-all": "pnpm run lint && pnpm run --parallel --aggregate-output \"/^lint$/\""
+	},
+	"devDependencies": {
+		"@types/node": "catalog:",
+		"@vite-trpc-demo/configs": "workspace:*",
+		"concurrently": "~9.1.2",
+		"eslint": "catalog:",
+		"jiti": "catalog:",
+		"prettier": "catalog:",
+		"typescript": "catalog:",
+		"typescript-eslint": "catalog:"
+	},
+	"devDependencies-comments": {
+		"jiti": "Required for eslint.config.ts support: https://eslint.org/docs/latest/use/configure/configuration-files#typescript-configuration-files"
+	},
+	"pnpm": {
+		"patchedDependencies": {
+			"eslint-import-resolver-next@0.4.2": "patches/eslint-import-resolver-next@0.4.2.patch"
+		},
+		"allowNonAppliedPatches": true,
+		"onlyBuiltDependencies": [
+			"@parcel/watcher",
+			"@swc/core",
+			"esbuild"
+		]
+	},
+	"pnpm.patchedDependencies.comments": {
+		"eslint-import-resolver-next@0.4.2": "Fix bad ESM imports: https://github.com/kuoruan/eslint-import-resolver-next/issues/1"
+	}
+}

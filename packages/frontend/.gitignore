@@ -1,0 +1,8 @@
+*.tsbuildinfo
+.DS_Store
+dist
+node_modules
+
+# TanStack Router-generated file:
+/src/route-tree.gen.ts
+

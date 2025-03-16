@@ -1,0 +1,11 @@
+{
+	"extends": "../../tsconfig.base.json",
+	"compilerOptions": {
+		"allowImportingTsExtensions": true,
+		"allowJs": true,
+		"checkJs": true,
+		"noEmit": true,
+		"rootDir": "."
+	},
+	"include": ["eslint.config.ts", "prettier.config.js", "vite.config.ts"]
+}
