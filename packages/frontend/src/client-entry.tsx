@@ -5,9 +5,10 @@ import {StrictMode} from 'react';
 import {createRoot} from 'react-dom/client';
 import invariant from 'tiny-invariant';
 
+import {QueryClient, QueryClientProvider} from '#src/utils/tanstack-query-cjs.js';
+
 import {routeTree} from './route-tree.gen.js';
 import {TRPCProvider} from './trpc.js';
-import {QueryClient, QueryClientProvider} from './utils/tanstack-query-cjs.js';
 
 import type {TRPCOptionsProxy} from '@trpc/tanstack-react-query';
 import type {AppRouter} from '@vite-trpc-demo/backend';
@@ -48,7 +49,6 @@ function clientInit() {
 			},
 		},
 	});
-	// const queryClient_cjs = queryClient as unknown as QueryClient_Cjs; // https://github.com/trpc/trpc/issues/6554
 
 	const trpcClient = createTRPCClient<AppRouter>({
 		links: [httpBatchLink({url: import.meta.env.VITE_BACKEND_URL})],
